@@ -207,3 +207,55 @@ func GetConceptsBySourceContentID(sourceContentID int) ([]models.Concept, error)
 
 	return concepts, nil
 }
+
+// CreateConceptsBatch creates multiple concepts in a single transaction
+func CreateConceptsBatch(concepts []models.Concept) ([]models.Concept, error) {
+	if len(concepts) == 0 {
+		return []models.Concept{}, nil
+	}
+
+	// Start transaction
+	tx, err := DB.Begin()
+	if err != nil {
+		return nil, fmt.Errorf("failed to begin transaction: %w", err)
+	}
+	defer tx.Rollback() // Rollback if not committed
+
+	query := `
+		INSERT INTO concepts (title, description, source_content_id)
+		VALUES ($1, $2, $3)
+		RETURNING id, title, description, source_content_id, created_at, updated_at
+	`
+
+	createdConcepts := make([]models.Concept, 0, len(concepts))
+
+	for _, concept := range concepts {
+		var c models.Concept
+		err := tx.QueryRow(
+			query,
+			concept.Title,
+			concept.Description,
+			concept.SourceContentID,
+		).Scan(
+			&c.ID,
+			&c.Title,
+			&c.Description,
+			&c.SourceContentID,
+			&c.CreatedAt,
+			&c.UpdatedAt,
+		)
+
+		if err != nil {
+			return nil, fmt.Errorf("failed to create concept: %w", err)
+		}
+
+		createdConcepts = append(createdConcepts, c)
+	}
+
+	// Commit transaction
+	if err := tx.Commit(); err != nil {
+		return nil, fmt.Errorf("failed to commit transaction: %w", err)
+	}
+
+	return createdConcepts, nil
+}

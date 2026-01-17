@@ -30,6 +30,11 @@ func main() {
 		log.Fatalf("Failed to run migrations: %v", err)
 	}
 
+	// Initialize services
+	if err := handlers.InitSourceContentService(); err != nil {
+		log.Fatalf("Failed to initialize services: %v", err)
+	}
+
 	// Set up Gin router
 	router := gin.Default()
 
@@ -49,10 +54,22 @@ func main() {
 			concepts.DELETE("/:id", handlers.DeleteConcept)
 		}
 
+		// Source Content routes
+		sourceContent := api.Group("/source-content")
+		{
+			sourceContent.POST("", handlers.ProcessSourceContent)
+			sourceContent.GET("", handlers.GetSourceContents)
+			sourceContent.GET("/:id", handlers.GetSourceContent)
+			sourceContent.GET("/:id/concepts", handlers.GetSourceContentConcepts)
+			sourceContent.GET("/:id/quizzes", handlers.GetSourceContentQuizzes)
+			sourceContent.GET("/:id/content", handlers.GetSourceContentGeneratedContent)
+			sourceContent.DELETE("/:id", handlers.DeleteSourceContent)
+		}
+
 		// Health check endpoint
 		api.GET("/health", func(c *gin.Context) {
 			c.JSON(200, gin.H{
-				"status": "ok",
+				"status":  "ok",
 				"message": "Brain API is running",
 			})
 		})
