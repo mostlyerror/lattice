@@ -1,4 +1,4 @@
-module github.com/benjaminpoon/brain-api
+module github.com/mostlyerror/lattice
 
 go 1.25.6
 

@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/benjaminpoon/brain-api/internal/db"
-	"github.com/benjaminpoon/brain-api/internal/models"
-	"github.com/benjaminpoon/brain-api/pkg/youtube"
+	"github.com/mostlyerror/lattice/internal/db"
+	"github.com/mostlyerror/lattice/internal/models"
+	"github.com/mostlyerror/lattice/pkg/youtube"
 )
 
 // SourceContentService orchestrates the full content processing pipeline

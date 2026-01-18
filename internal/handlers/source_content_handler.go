@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/benjaminpoon/brain-api/internal/db"
-	"github.com/benjaminpoon/brain-api/internal/models"
-	"github.com/benjaminpoon/brain-api/internal/services"
+	"github.com/mostlyerror/lattice/internal/db"
+	"github.com/mostlyerror/lattice/internal/models"
+	"github.com/mostlyerror/lattice/internal/services"
 	"github.com/gin-gonic/gin"
 )
 

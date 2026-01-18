@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/benjaminpoon/brain-api/internal/models"
-	"github.com/benjaminpoon/brain-api/pkg/claude"
+	"github.com/mostlyerror/lattice/internal/models"
+	"github.com/mostlyerror/lattice/pkg/claude"
 )
 
 // ClaudeService handles all Claude API interactions

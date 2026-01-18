@@ -19,7 +19,7 @@ All implementation is complete! Here's what's been built:
 
 ### System Prerequisites ✅
 - [x] PostgreSQL running (`/tmp:5432 - accepting connections`)
-- [x] Database 'brain' created
+- [x] Database 'lattice' created
 - [x] yt-dlp installed (`/opt/homebrew/bin/yt-dlp`)
 - [x] .env file exists
 - [x] Code compiles successfully
@@ -51,11 +51,11 @@ CLAUDE_API_KEY=sk-ant-api03-xxxxxxxxxxxxxxxxxxxxx
 **Verify your DATABASE_URL is correct:**
 ```bash
 # In .env, make sure this matches your PostgreSQL setup:
-DATABASE_URL=postgresql://user:password@localhost:5432/brain?sslmode=disable
+DATABASE_URL=postgresql://user:password@localhost:5432/lattice?sslmode=disable
 
 # Replace 'user' and 'password' with your PostgreSQL credentials
 # Common defaults:
-DATABASE_URL=postgresql://postgres:postgres@localhost:5432/brain?sslmode=disable
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/lattice?sslmode=disable
 ```
 
 ### 2. Start the Server
@@ -70,7 +70,7 @@ go run cmd/server/main.go
 Database connection established
 Applied migration: 001_initial_schema.sql
 All migrations applied successfully
-Starting Brain API server on port 8080...
+Starting Lattice API server on port 8080...
 [GIN-debug] POST   /api/source-content       --> ...
 [GIN-debug] GET    /api/source-content       --> ...
 [GIN-debug] GET    /api/source-content/:id   --> ...
@@ -249,7 +249,7 @@ brew services start postgresql@14
 brew services start postgresql
 
 # Verify database exists
-psql -l | grep brain
+psql -l | grep lattice
 ```
 
 ### "Failed to extract concepts"

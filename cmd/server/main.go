@@ -5,9 +5,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/benjaminpoon/brain-api/internal/db"
-	"github.com/benjaminpoon/brain-api/internal/handlers"
-	"github.com/benjaminpoon/brain-api/internal/middleware"
+	"github.com/mostlyerror/lattice/internal/db"
+	"github.com/mostlyerror/lattice/internal/handlers"
+	"github.com/mostlyerror/lattice/internal/middleware"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
@@ -70,7 +70,7 @@ func main() {
 		api.GET("/health", func(c *gin.Context) {
 			c.JSON(200, gin.H{
 				"status":  "ok",
-				"message": "Brain API is running",
+				"message": "Lattice API is running",
 			})
 		})
 	}
@@ -82,7 +82,7 @@ func main() {
 	}
 
 	// Start server
-	log.Printf("Starting Brain API server on port %s...", port)
+	log.Printf("Starting Lattice API server on port %s...", port)
 	if err := router.Run(":" + port); err != nil {
 		log.Fatalf("Failed to start server: %v", err)
 	}

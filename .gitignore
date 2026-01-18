@@ -12,8 +12,7 @@
 *.test
 *.out
 go.work
-brain-server
-brain-api/brain-server
+lattice-server
 
 # IDE
 .vscode/

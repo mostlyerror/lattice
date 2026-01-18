@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/benjaminpoon/brain-api/internal/models"
+	"github.com/mostlyerror/lattice/internal/models"
 )
 
 // CreateGeneratedContent creates a new generated content record

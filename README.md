@@ -37,8 +37,8 @@ Lattice solves the problem of **zero ROI on learning time**. Right now when you 
 ### 1. Clone and Install
 
 ```bash
-git clone https://github.com/mostlyerror/brain.git
-cd brain
+git clone https://github.com/mostlyerror/lattice.git
+cd lattice
 go mod download
 ```
 
@@ -46,11 +46,11 @@ go mod download
 
 ```bash
 # Create database
-createdb brain
+createdb lattice
 
 # Or using psql
 psql postgres
-CREATE DATABASE brain;
+CREATE DATABASE lattice;
 \q
 ```
 
@@ -68,7 +68,7 @@ nano .env
 
 ```bash
 # Database
-DATABASE_URL=postgresql://user:password@localhost:5432/brain?sslmode=disable
+DATABASE_URL=postgresql://user:password@localhost:5432/lattice?sslmode=disable
 
 # Claude API (get from https://console.anthropic.com/)
 CLAUDE_API_KEY=sk-ant-your-api-key-here
@@ -100,7 +100,7 @@ Server will start on `http://localhost:8080`
 Database connection established
 Applied migration: 001_initial_schema.sql
 All migrations applied successfully
-Starting Brain API server on port 8080...
+Starting Lattice API server on port 8080...
 ```
 
 ## API Endpoints
@@ -328,7 +328,7 @@ concepts (many) ──< (many) generated_contents (via JSONB array)
 ## Project Structure
 
 ```
-brain/
+lattice/
 ├── cmd/
 │   └── server/
 │       └── main.go              # Server entry point
@@ -463,7 +463,7 @@ brew install yt-dlp
 **"Database connection failed"**
 - Verify PostgreSQL is running: `pg_isready`
 - Check DATABASE_URL in .env
-- Create database: `createdb brain`
+- Create database: `createdb lattice`
 
 ## Development
 
@@ -474,8 +474,8 @@ go test ./...
 
 ### Building
 ```bash
-go build -o brain-server cmd/server/main.go
-./brain-server
+go build -o lattice-server cmd/server/main.go
+./lattice-server
 ```
 
 ### Code Organization
