@@ -37,7 +37,8 @@ Lattice solves the problem of **zero ROI on learning time**. Right now when you 
 ### 1. Clone and Install
 
 ```bash
-cd brain-api
+git clone https://github.com/mostlyerror/brain.git
+cd brain
 go mod download
 ```
 
@@ -89,7 +90,6 @@ CONCEPTS_MAX=7
 ### 4. Run the Server
 
 ```bash
-cd brain-api
 go run cmd/server/main.go
 ```
 
@@ -328,7 +328,7 @@ concepts (many) ──< (many) generated_contents (via JSONB array)
 ## Project Structure
 
 ```
-brain-api/
+brain/
 ├── cmd/
 │   └── server/
 │       └── main.go              # Server entry point

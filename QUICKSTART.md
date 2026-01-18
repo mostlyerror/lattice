@@ -61,7 +61,7 @@ DATABASE_URL=postgresql://postgres:postgres@localhost:5432/brain?sslmode=disable
 ### 2. Start the Server
 
 ```bash
-# From the brain-api directory
+# From the root directory
 go run cmd/server/main.go
 ```
 
